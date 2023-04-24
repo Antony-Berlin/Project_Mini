@@ -1,11 +1,11 @@
-import pyttsx
+import pyttsx3
 
-engine = pyttsx.init()
+def ready_speak():
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[1].id)
+    return engine
 
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
-
-
-text = "hello da bois"
-engine.say(text)
-engine.runAndWait()
+def speak(engine,text):
+    engine.say(text)
+    engine.runAndWait()
